@@ -12,7 +12,10 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 from PyQt5.QtWidgets import QWidget, QAction, QTabWidget,QVBoxLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
-import balance, receive
+from balance import Balance
+from send import Send
+from receive import Receive
+# import balance, receive, send
  
 class Wallet(QMainWindow):
 
@@ -51,13 +54,19 @@ class MainWindow(QWidget):
  
         # create balance tab
         self.balanceTab.layout = QVBoxLayout(self)
-        self.balance = balance.Balance()
+        self.balance = Balance()
         self.balanceTab.layout.addWidget(self.balance)
         self.balanceTab.setLayout(self.balanceTab.layout)
- 
+
+        #create send tab
+        self.sendTab.layout = QVBoxLayout(self)
+        self.send = Send()
+        self.sendTab.layout.addWidget(self.send)
+        self.sendTab.setLayout(self.sendTab.layout)
+
         #create receive tab
         self.receiveTab.layout = QVBoxLayout(self)
-        self.receive = receive.Receive()
+        self.receive = Receive()
         self.receiveTab.layout.addWidget(self.receive)
         self.receiveTab.setLayout(self.receiveTab.layout)
  
